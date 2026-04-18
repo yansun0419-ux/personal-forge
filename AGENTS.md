@@ -1,4 +1,8 @@
-# Personal Digital Garden - AI Harness Rules
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+
+---
 
 ## 1. 核心架构与技术栈
 
@@ -21,7 +25,7 @@
 
 ## 4. 自动化闭环与工作流 (Agent Workflow)
 
-- **强制测试先行 (TDD 倾向)：** 在编写核心逻辑文件前，必须先写好对应的单元测试文件。
+- **强制测试先行：** 编写核心逻辑文件前，必须先写好对应的单元测试文件。
 - **自我验证：** 编写完代码后，你必须主动在终端运行 `npm run build` 或对应的测试命令。
 - **自我修复门控：** 如果终端输出报错（Error），你必须自己读取 Error Log 并进行修复，直到编译通过，才能向我汇报“任务完成”。
 
@@ -29,8 +33,8 @@
 
 - **任务切片：** 每次只能向我交付一个独立的功能节点。
 - **强制停止：** 完成该节点并确保测试通过后，必须停止行动，并输出一句：“功能已完成，请 Review 并执行 git commit。确认后请回复‘继续’”。
-- **禁止越权：** 未经明确指令，绝对禁止擅自执行 git add 或 git commit 命令。
+- **禁止越权：** 未经明确指令，绝对禁止擅自执行 `git add` 或 `git commit`。
 
 ---
 
-若有任何不清楚的地方，先查询 `rules/` 目录下的文档，若仍有疑问，再向我提问。请严格遵守以上规则，确保项目的高质量和可维护性。
+**最高指令：** 若有任何不清楚的地方，先查询 `rules/` 目录下的文档，若仍有疑问，再向我提问。请严格遵守以上规则，确保项目的高质量和可维护性。
