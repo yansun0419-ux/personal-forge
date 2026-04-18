@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-zinc-50 text-zinc-900">
@@ -35,6 +37,46 @@ export default function Home() {
             &apos;divine weapons&apos; (exceptional projects). I don&apos;t fear
             the process. I embrace it as the only path to mastery.
           </p>
+        </section>
+
+        <section className="mt-24 max-w-3xl space-y-6 sm:mt-32 sm:space-y-8">
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-zinc-500">
+            Featured Tools
+          </p>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-1">
+            <Link href="/tools/crypto">
+              <div className="group rounded-sm border border-zinc-200 bg-white p-6 transition-all duration-300 hover:border-zinc-400 hover:bg-zinc-50 hover:shadow-sm hover:-translate-y-0.5 cursor-pointer">
+                <h3 className="text-lg font-medium tracking-tight text-zinc-900 group-hover:text-zinc-950">
+                  Crypto Utility
+                </h3>
+                <p className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500 group-hover:text-zinc-600">
+                  加密小工具
+                </p>
+                <p className="mt-4 text-sm leading-7 text-zinc-600 group-hover:text-zinc-700">
+                  A secure AES-256-CBC encryption tool for safe data forging.
+                </p>
+                <p className="mt-2 text-sm leading-7 text-zinc-500 group-hover:text-zinc-600">
+                  基于高强度算法的加解密实验原型。
+                </p>
+                <div className="mt-4 flex items-center gap-2 text-xs font-medium text-zinc-700 group-hover:text-zinc-900">
+                  <span>Open</span>
+                  <svg
+                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+          </div>
         </section>
       </div>
     </main>
