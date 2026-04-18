@@ -8,7 +8,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - 框架：Next.js (App Router 模式)
 - 语言：严格使用 TypeScript
-- 样式：Tailwind CSS v4 （注意版本差异（可能没有配置文件）和新特性）
+- 样式：Tailwind CSS v4 （注意没有tailwind.config文件，所有配置都在代码里）
 - 部署：Vercel (必须保证无服务器环境的兼容性)
 
 ## 2. 代码产出纪律 (Code Discipline)
