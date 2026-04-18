@@ -41,10 +41,47 @@ export default function Home() {
 
         <section className="mt-24 max-w-3xl space-y-6 sm:mt-32 sm:space-y-8">
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-zinc-500">
-            Featured Tools
+            Featured Entry Points
           </p>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-1">
-            <Link href="/utility/encryption">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <Link href="/garden" aria-label="Open the digital garden">
+              <div className="group h-full rounded-sm border border-zinc-200 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-zinc-50 hover:shadow-sm cursor-pointer">
+                <h3 className="text-lg font-medium tracking-tight text-zinc-900 group-hover:text-zinc-950">
+                  Digital Garden
+                </h3>
+                <p className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500 group-hover:text-zinc-600">
+                  数字花园
+                </p>
+                <p className="mt-4 text-sm leading-7 text-zinc-600 group-hover:text-zinc-700">
+                  A quiet archive for notes, experiments, and long-form
+                  thinking.
+                </p>
+                <p className="mt-2 text-sm leading-7 text-zinc-500 group-hover:text-zinc-600">
+                  记录算法、前端与日常锻造的沉淀空间。
+                </p>
+                <div className="mt-4 flex items-center gap-2 text-xs font-medium text-zinc-700 group-hover:text-zinc-900">
+                  <span>Open</span>
+                  <svg
+                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/utility/encryption"
+              aria-label="Open the encryption tool"
+            >
               <div className="group rounded-sm border border-zinc-200 bg-white p-6 transition-all duration-300 hover:border-zinc-400 hover:bg-zinc-50 hover:shadow-sm hover:-translate-y-0.5 cursor-pointer">
                 <h3 className="text-lg font-medium tracking-tight text-zinc-900 group-hover:text-zinc-950">
                   Crypto Utility

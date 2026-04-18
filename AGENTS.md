@@ -8,12 +8,12 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - 框架：Next.js (App Router 模式)
 - 语言：严格使用 TypeScript
-- 样式：Tailwind CSS
+- 样式：Tailwind CSS v4 （注意版本差异（可能没有配置文件）和新特性）
 - 部署：Vercel (必须保证无服务器环境的兼容性)
 
 ## 2. 代码产出纪律 (Code Discipline)
 
-- **拒绝幻觉：** 如果你不确定某个包是否支持当前 Next.js 版本，必须要求我先去查阅文档，禁止盲目引入。
+- **拒绝幻觉：** 如果你不确定某个包是否支持当前 Next.js 版本，必须[要求我]先去查阅文档，禁止盲目引入。
 - **类型安全：** 禁止使用 `any` 类型。所有组件必须有清晰的 Interface 定义。
 - **组件拆分：** 单个文件尽可能不要超过 150 行（非必须）。如果超过，检查是否可以拆分成更小的组件或模块，如果可以，必须拆分。
 
