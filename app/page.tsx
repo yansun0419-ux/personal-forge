@@ -44,7 +44,7 @@ export default function Home() {
             Featured Tools
           </p>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-1">
-            <Link href="/tools/crypto">
+            <Link href="/utility/encryption">
               <div className="group rounded-sm border border-zinc-200 bg-white p-6 transition-all duration-300 hover:border-zinc-400 hover:bg-zinc-50 hover:shadow-sm hover:-translate-y-0.5 cursor-pointer">
                 <h3 className="text-lg font-medium tracking-tight text-zinc-900 group-hover:text-zinc-950">
                   Crypto Utility

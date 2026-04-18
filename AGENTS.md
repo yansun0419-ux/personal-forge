@@ -17,11 +17,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **类型安全：** 禁止使用 `any` 类型。所有组件必须有清晰的 Interface 定义。
 - **组件拆分：** 单个文件尽可能不要超过 150 行（非必须）。如果超过，检查是否可以拆分成更小的组件或模块，如果可以，必须拆分。
 
-## 3. 性能与 A11y 约束 (Lighthouse 100 目标)
+## 3. 性能与 A11y 约束 (Lighthouse 100 目标：业务需求永远第一。如果一个极其炫酷的 3D 交互让性能掉到了 85 分，但用户体验极佳，那就上 3D！我们追求的是“不犯低级错误的高分”，而不是“阉割功能的满分”。)
 
-- 所有图片必须使用 Next.js 原生的 `<Image>` 组件，并强制包含 `alt` 属性。
-- 所有的按钮 `<button>` 和链接 `<a>` 必须有清晰的 `aria-label`。
-- 禁止在首屏加载大型 3D 库（如 Three.js），所有复杂的交互模块必须使用 Next.js 的 `next/dynamic` 进行懒加载（Lazy Loading）。
+- 所有图片使用 Next.js 原生的 `<Image>` 组件，并强制包含 `alt` 属性。
+- 所有的按钮 `<button>` 和链接 `<a>` 有清晰的 `aria-label`。
+- 所有复杂的交互模块使用 Next.js 的 `next/dynamic` 进行懒加载（Lazy Loading）。
 
 ## 4. 自动化闭环与工作流 (Agent Workflow)
 
