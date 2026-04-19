@@ -79,7 +79,7 @@ export default function Home() {
             </Link>
 
             <Link
-              href="/utility/encryption"
+              href="/utility/crypto-tool"
               aria-label="Open the encryption tool"
             >
               <div className="group rounded-sm border border-zinc-200 bg-white p-6 transition-all duration-300 hover:border-zinc-400 hover:bg-zinc-50 hover:shadow-sm hover:-translate-y-0.5 cursor-pointer">
