@@ -45,9 +45,22 @@ export default async function GardenPostPage({
             <h1 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-5xl">
               {post.title}
             </h1>
-            <p className="mt-3 text-sm text-zinc-500 sm:text-base">
-              {formatDate(post.date)}
-            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-2.5 text-sm">
+              <time className="text-zinc-500" dateTime={post.date}>
+                {formatDate(post.date)}
+              </time>
+              {post.status ? (
+                <span className="text-zinc-700">{post.status}</span>
+              ) : null}
+              {post.tags?.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-md border border-zinc-200 bg-zinc-50 px-2 py-0.5 text-xs text-zinc-600"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-600 sm:text-base">
               {post.summary}
             </p>

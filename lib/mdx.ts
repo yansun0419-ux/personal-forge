@@ -9,6 +9,8 @@ export interface GardenPostFrontmatter {
   title: string;
   date: string;
   summary: string;
+  tags?: string[];
+  status?: string;
 }
 
 export interface GardenPostListItem extends GardenPostFrontmatter {
@@ -21,6 +23,37 @@ export interface GardenPost extends GardenPostListItem {
 
 function normalizeDate(date: string | Date) {
   return date instanceof Date ? date.toISOString() : date;
+}
+
+function normalizeTags(tags: unknown): string[] | undefined {
+  if (Array.isArray(tags)) {
+    const normalized = tags
+      .filter((tag): tag is string => typeof tag === "string")
+      .map((tag) => tag.trim())
+      .filter(Boolean);
+
+    return normalized.length > 0 ? normalized : undefined;
+  }
+
+  if (typeof tags === "string") {
+    const normalized = tags
+      .split(",")
+      .map((tag) => tag.trim())
+      .filter(Boolean);
+
+    return normalized.length > 0 ? normalized : undefined;
+  }
+
+  return undefined;
+}
+
+function normalizeStatus(status: unknown): string | undefined {
+  if (typeof status !== "string") {
+    return undefined;
+  }
+
+  const normalized = status.trim();
+  return normalized.length > 0 ? normalized : undefined;
 }
 
 export async function getAllGardenPosts(): Promise<GardenPostListItem[]> {
@@ -39,6 +72,8 @@ export async function getAllGardenPosts(): Promise<GardenPostListItem[]> {
           title: String(data.title ?? slug),
           date: normalizeDate(data.date ?? ""),
           summary: String(data.summary ?? ""),
+          tags: normalizeTags(data.tags),
+          status: normalizeStatus(data.status),
         } satisfies GardenPostListItem;
       }),
   );
@@ -59,6 +94,8 @@ export async function getGardenPostBySlug(slug: string): Promise<GardenPost> {
     title: String(data.title ?? slug),
     date: normalizeDate(data.date ?? ""),
     summary: String(data.summary ?? ""),
+    tags: normalizeTags(data.tags),
+    status: normalizeStatus(data.status),
     content,
   };
 }
