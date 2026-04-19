@@ -1,0 +1,71 @@
+---
+title: Top K 问题：从暴力排序到理论最优
+date: 2026-04-18
+tags: ["算法", "排序", "堆", "快速选择", "TopK"]
+status: 🌱 Seedling
+summary: 面对“海量数据找前 K 大”的经典问题，如何根据数据规模和实时性要求在内置排序、最小堆和快速选择之间做出抉择？
+---
+
+# Top K 问题：三大策略的权衡
+
+Top K 是面试中最能体现“场景分析能力”的题目。没有最好的算法，只有最适合场景的解法。
+
+## 1. 核心解法对照表
+
+| 解法 | 时间复杂度 | 空间复杂度 | 适用场景 |
+| :--- | :--- | :--- | :--- |
+| **内置 sort()** | $O(N \log N)$ | $O(\log N)$ | 数据量小、$K$ 接近 $N$、日常开发、力扣快速通关 |
+| **最小堆 (Min-Heap)** | $O(N \log K)$ | $O(K)$ | **海量数据**、动态数据流、$K \ll N$ (面试必考) |
+| **快速选择 (QuickSelect)** | 平均 $O(N)$ | $O(1)$ | 静态数组、追求理论最优解 (面试高分点) |
+
+## 2. 深度心法：为什么选堆？
+
+很多人面试时上来就说快排，但如果面试官追问：“如果数据量是 10 亿个数，内存放不下怎么办？”
+
+这时候**最小堆**就是唯一的答案：
+- **内存友好**：我们不需要把 10 亿个数都加载进内存，只需要维护一个大小为 $K$ 的堆。
+- **动态处理**：数据可以像流水一样进来，我们实时更新堆，永远保持堆里是目前最大的 $K$ 个数。
+
+## 3. 快速选择 (QuickSelect) 模板
+
+这是基于快排 `partition` 思想的变种。它的精髓在于：**我们不需要给全员排序，只要把前 K 个数“甩”到数组一边即可。**
+
+```javascript
+function quickSelect(nums, k) {
+  let left = 0, right = nums.length - 1;
+  const target = nums.length - k; // 找第 k 大，等同于找升序后的第 n-k 个
+
+  while (left <= right) {
+    let pivotIndex = partition(nums, left, right);
+    if (pivotIndex === target) {
+      return nums[pivotIndex];
+    } else if (pivotIndex < target) {
+      left = pivotIndex + 1;
+    } else {
+      right = pivotIndex - 1;
+    }
+  }
+}
+
+// 标准的快排分区逻辑
+function partition(nums, left, right) {
+  let pivot = nums[right];
+  let i = left;
+  for (let j = left; j < right; j++) {
+    if (nums[j] < pivot) {
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+      i++;
+    }
+  }
+  [nums[i], nums[right]] = [nums[right], nums[i]];
+  return i;
+}
+```
+
+## 4. 记忆技巧与面试话术
+
+- **求前 $K$ 大用小顶堆**：因为我们要剔除小的，留下大的。小顶堆的堆顶是最小的，发现新数比堆顶大，就踢掉堆顶换新人。
+- **求前 $K$ 小用大顶堆**：同理，剔除大的，留下小的。
+- **话术建议**：先提 $O(N \log N)$ 的简单解法，然后主动引出“如果是海量数据流”的情况下我会用 $O(N \log K)$ 的堆，最后展示对 $O(N)$ 快速选择的掌握。
+
+> **锻造感悟：** Top K 问题的进化过程反映了计算机科学的核心：**资源置换**。内置排序用时间换简单，堆用空间换处理流数据的能力，而快速选择则通过舍弃不必要的排序顺序来压榨极致的时间效率。
