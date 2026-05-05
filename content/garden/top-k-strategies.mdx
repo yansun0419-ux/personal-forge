@@ -30,6 +30,9 @@ Top K 是面试中最能体现“场景分析能力”的题目。没有最好�
 
 这是基于快排 `partition` 思想的变种。它的精髓在于：**我们不需要给全员排序，只要把前 K 个数“甩”到数组一边即可。**
 
+> 随机选取 pivot 是为了避免最坏情况（比如已经有序的数组），保证平均时间复杂度是 $O(N)$。
+> 3路划分（Dutch National Flag）是为了处理大量重复元素导致的 TLE 问题。
+
 ```javascript
 function findKthLargest(nums: number[], k: number): number {
     // 寻找第 k 大的元素，如果按降序排列，其目标索引应为 k - 1
