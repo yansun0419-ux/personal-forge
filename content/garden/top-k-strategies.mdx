@@ -31,34 +31,94 @@ Top K 是面试中最能体现“场景分析能力”的题目。没有最好�
 这是基于快排 `partition` 思想的变种。它的精髓在于：**我们不需要给全员排序，只要把前 K 个数“甩”到数组一边即可。**
 
 ```javascript
-function quickSelect(nums, k) {
-  let left = 0, right = nums.length - 1;
-  const target = nums.length - k; // 找第 k 大，等同于找升序后的第 n-k 个
+function findKthLargest(nums: number[], k: number): number {
+    // 寻找第 k 大的元素，如果按降序排列，其目标索引应为 k - 1
+    const targetIndex = k - 1;
 
-  while (left <= right) {
-    let pivotIndex = partition(nums, left, right);
-    if (pivotIndex === target) {
-      return nums[pivotIndex];
-    } else if (pivotIndex < target) {
-      left = pivotIndex + 1;
-    } else {
-      right = pivotIndex - 1;
-    }
-  }
+    const quickSelect = (left: number, right: number): number => {
+        // 区间内只有一个元素，直接返回
+        if (left === right) {
+            return nums[left];
+        }
+
+        // 1. 随机选择 Pivot，并将其交换到区间最右侧
+        const randomIndex = Math.floor(Math.random() * (right - left + 1)) + left;
+        [nums[randomIndex], nums[right]] = [nums[right], nums[randomIndex]];
+        
+        const pivot = nums[right];
+        
+        // 2. Partition 过程 (降序排列，把比 pivot 大的放到左边)
+        let p = left; // p 始终指向下一个“大于等于 pivot”的元素应该存放的位置
+        for (let i = left; i < right; i++) {
+            if (nums[i] >= pivot) {
+                [nums[i], nums[p]] = [nums[p], nums[i]];
+                p++;
+            }
+        }
+        // 将 pivot 放到它最终确定的位置 p 上
+        [nums[p], nums[right]] = [nums[right], nums[p]];
+
+        // 3. 根据 pivot 的最终位置决定往哪边递归
+        if (p === targetIndex) {
+            return nums[p]; // 刚好找到第 k 大的元素
+        } else if (p < targetIndex) {
+            // 目标在 p 的右侧
+            return quickSelect(p + 1, right);
+        } else {
+            // 目标在 p 的左侧
+            return quickSelect(left, p - 1);
+        }
+    };
+
+    return quickSelect(0, nums.length - 1);
 }
+```
 
-// 标准的快排分区逻辑
-function partition(nums, left, right) {
-  let pivot = nums[right];
-  let i = left;
-  for (let j = left; j < right; j++) {
-    if (nums[j] < pivot) {
-      [nums[i], nums[j]] = [nums[j], nums[i]];
-      i++;
-    }
-  }
-  [nums[i], nums[right]] = [nums[right], nums[i]];
-  return i;
+上面的方法是Lomuto分区（可以降低心智负担），也是双指针，但是一个指针由for loop维护，不用人为控制。
+Hoare分区也可以，核心思想是一样的。
+
+两者都可以用来实现快速选择 和 快速排序，下面是Hoare分区的版本：
+
+```typescript
+function findKthLargest(nums: number[], k: number): number {
+    const targetIndex = k - 1;
+
+    const quickSelect = (left: number, right: number): number => {
+        if (left === right) return nums[left];
+
+        // 1. 随便抓一个基准值（不需要像单指针那样把它换到末尾去藏起来）
+        const randomIndex = Math.floor(Math.random() * (right - left + 1)) + left;
+        const pivot = nums[randomIndex];
+
+        // 2. 双指针就位（故意往外扩一格，配合后面的 do-while）
+        let i = left - 1;
+        let j = right + 1;
+
+        while (i < j) {
+            // 降序：左指针寻找比 pivot 小的（这些小家伙不该在左边）
+            do { i++; } while (nums[i] > pivot);
+            
+            // 降序：右指针寻找比 pivot 大的（这些大家伙不该在右边）
+            do { j--; } while (nums[j] < pivot);
+
+            // 双方都找到了“叛徒”，交换它们！
+            if (i < j) {
+                [nums[i], nums[j]] = [nums[j], nums[i]];
+            }
+        }
+
+        // 3. 循环结束时，指针 j 成了天然的“三八线”！
+        // [left, j] 这个区间里的数，全都 >= pivot
+        // [j + 1, right] 这个区间里的数，全都 <= pivot
+        
+        if (targetIndex <= j) {
+            return quickSelect(left, j); // 目标在左半区
+        } else {
+            return quickSelect(j + 1, right); // 目标在右半区
+        }
+    };
+
+    return quickSelect(0, nums.length - 1);
 }
 ```
 
