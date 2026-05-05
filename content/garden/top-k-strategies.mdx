@@ -77,6 +77,11 @@ function findKthLargest(nums: number[], k: number): number {
 上面的方法是Lomuto分区（可以降低心智负担），也是双指针，但是一个指针由for loop维护，不用人为控制。
 Hoare分区也可以，核心思想是一样的。
 
+> 关于 left > right 的疑问
+> 你的直觉非常敏锐：如果 j === left，确实会导致传进去的参数变成 left 和 left - 1（即左边界大于右边界）。
+> 但是，你的猜测是对的：代码在实际运行中根本走不到那个死角。
+> 原因在于，这段代码在递归时始终维护了一个绝对安全的数学边界条件（Invariant）：你要找的 targetIndex 永远被死死夹在当前的 [left, right] 区间内。也就是 `left <= targetIndex <= right` 永远成立。
+
 两者都可以用来实现快速选择 和 快速排序，下面是Hoare分区的版本：
 
 ```typescript
@@ -121,6 +126,66 @@ function findKthLargest(nums: number[], k: number): number {
     return quickSelect(0, nums.length - 1);
 }
 ```
+
+出现了大量重复的item在一个测试用例中，导致TLE，解决办法是使用三路划分（Dutch National Flag）（基于Lomuto分区）来处理重复元素
+
+```typescript
+function findKthLargest(nums: number[], k: number): number {
+    const quickSelect = (left: number, right: number): number => {
+        if (left === right) return nums[left];
+
+        // 1. 随机选取基准值
+        const pivot = nums[Math.floor(Math.random() * (right - left + 1)) + left];
+
+        // 2. 荷兰国旗三路划分
+        let l = left;      // l 的左边都是严格大于 pivot 的
+        let r = right;     // r 的右边都是严格小于 pivot 的
+        let i = left;      // i 是当前考察的游标指针
+
+        while (i <= r) {
+            if (nums[i] > pivot) {
+                // 遇到比 pivot 大的，扔到左边去，游标 i 放心往前走
+                [nums[i], nums[l]] = [nums[l], nums[i]];
+                l++;
+                i++;
+            } else if (nums[i] < pivot) {
+                // 遇到比 pivot 小的，扔到右边去
+                // 注意：这里 i 不能动！因为从右边换过来的数还没被检查过
+                [nums[i], nums[r]] = [nums[r], nums[i]];
+                r--;
+            } else {
+                // 遇到等于 pivot 的，什么都不用换，游标直接往前走
+                i++;
+            }
+        }
+
+        // 3. 循环结束后，数组被完美切分成了三块：
+        // [left, l - 1]   ：全部 > pivot
+        // [l, r]          ：全部 === pivot  <-- (防 TLE 的核心区域)
+        // [r + 1, right]  ：全部 < pivot
+
+        const targetIndex = k - 1;
+
+        // 4. 判断第 k 大的元素落在哪块区域
+        if (targetIndex >= l && targetIndex <= r) {
+            // 目标正好在“相等区域”里，直接出结果！不需要再递归了！
+            return pivot;
+        } else if (targetIndex < l) {
+            // 目标在左侧（大于 pivot 的区域）
+            return quickSelect(left, l - 1);
+        } else {
+            // 目标在右侧（小于 pivot 的区域）
+            return quickSelect(r + 1, right);
+        }
+    };
+
+    return quickSelect(0, nums.length - 1);
+}
+```
+
+（标准的 Hoare 划分本身就是两路的，强行改造成三路会非常反人类。工业界（比如 C 语言库中的 qsort）使用了一种叫 Bentley-McIlroy 三路划分 的神级算法。它依然是左右双指针向中间靠拢，但是遇到等于 pivot 的元素时，会先把它们塞到数组的最左边和最右边。等双指针相遇后，再把两端的相等元素统统**“搬”回数组中间**。）
+
+```typescript
 
 ## 4. 记忆技巧与面试话术
 
