@@ -142,7 +142,7 @@ function findKthLargest(nums: number[], k: number): number {
         let r = right;     // r 的右边都是严格小于 pivot 的
         let i = left;      // i 是当前考察的游标指针
 
-        while (i <= r) {
+        while (i <= r) { // 注意：这里是 <= r，因为 r 还没有被检查过
             if (nums[i] > pivot) {
                 // 遇到比 pivot 大的，扔到左边去，游标 i 放心往前走
                 [nums[i], nums[l]] = [nums[l], nums[i]];
