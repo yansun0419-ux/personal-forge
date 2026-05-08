@@ -7,7 +7,7 @@ const gardenDirectory = path.join(process.cwd(), "content", "garden");
 
 export interface GardenPostFrontmatter {
   title: string;
-  date: string;
+  date?: string;
   summary: string;
   tags?: string[];
   status?: string;
@@ -21,7 +21,11 @@ export interface GardenPost extends GardenPostListItem {
   content: string;
 }
 
-function normalizeDate(date: string | Date) {
+function normalizeDate(date: string | Date | undefined) {
+  if (!date) {
+    return undefined;
+  }
+
   return date instanceof Date ? date.toISOString() : date;
 }
 
@@ -80,7 +84,8 @@ export async function getAllGardenPosts(): Promise<GardenPostListItem[]> {
 
   return posts.sort(
     (left, right) =>
-      new Date(right.date).getTime() - new Date(left.date).getTime(),
+      (right.date ? new Date(right.date).getTime() : 0) -
+      (left.date ? new Date(left.date).getTime() : 0),
   );
 }
 

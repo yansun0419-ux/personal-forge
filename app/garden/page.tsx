@@ -46,9 +46,14 @@ export default async function GardenPage() {
                       {post.summary}
                     </p>
                   </div>
-                  <time className="text-sm text-zinc-500" dateTime={post.date}>
-                    {formatDate(post.date)}
-                  </time>
+                  {post.date ? (
+                    <time
+                      className="text-sm text-zinc-500"
+                      dateTime={post.date}
+                    >
+                      {formatDate(post.date)}
+                    </time>
+                  ) : null}
                 </div>
                 <div className="space-y-2">
                   {post.tags?.length ? (

@@ -60,9 +60,11 @@ export default async function GardenPostPage({
             {post.title}
           </h1>
           <div className="mt-4 flex flex-wrap items-center gap-2.5 text-sm">
-            <time className="text-zinc-500" dateTime={post.date}>
-              {formatDate(post.date)}
-            </time>
+            {post.date ? (
+              <time className="text-zinc-500" dateTime={post.date}>
+                {formatDate(post.date)}
+              </time>
+            ) : null}
             {post.status ? (
               <span className="text-zinc-700">{post.status}</span>
             ) : null}
