@@ -18,14 +18,14 @@ export const themeTokens = {
       tertiary: "var(--color-tertiary)",
     },
     background: {
-      primary: "var(--color-background-primary)",
-      secondary: "var(--color-background-secondary)",
-      tertiary: "var(--color-background-tertiary)",
+      primary: "var(--bg-primary)",
+      secondary: "var(--bg-secondary)",
+      tertiary: "var(--bg-tertiary)",
     },
     text: {
-      primary: "var(--color-text-primary)",
-      secondary: "var(--color-text-secondary)",
-      tertiary: "var(--color-text-tertiary)",
+      primary: "var(--text-primary)",
+      secondary: "var(--text-secondary)",
+      tertiary: "var(--text-tertiary)",
     },
   },
   night: {
@@ -35,14 +35,14 @@ export const themeTokens = {
       tertiary: "var(--color-tertiary)",
     },
     background: {
-      primary: "var(--color-background-primary)",
-      secondary: "var(--color-background-secondary)",
-      tertiary: "var(--color-background-tertiary)",
+      primary: "var(--bg-primary)",
+      secondary: "var(--bg-secondary)",
+      tertiary: "var(--bg-tertiary)",
     },
     text: {
-      primary: "var(--color-text-primary)",
-      secondary: "var(--color-text-secondary)",
-      tertiary: "var(--color-text-tertiary)",
+      primary: "var(--text-primary)",
+      secondary: "var(--text-secondary)",
+      tertiary: "var(--text-tertiary)",
     },
   },
 } satisfies Record<"day" | "night", ThemeTokens>;
