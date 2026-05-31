@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Personal Portfolio",
-  description: "A day and night theme study for a personal site.",
+  title: "Personal Forge",
+  description:
+    "A personal forge log for code, craft, and disciplined practice.",
 };
 
 export default function RootLayout({

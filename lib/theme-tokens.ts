@@ -11,40 +11,19 @@ export interface ThemeTokens {
 }
 
 export const themeTokens = {
-  day: {
-    accent: {
-      primary: "var(--color-primary)",
-      secondary: "var(--color-secondary)",
-      tertiary: "var(--color-tertiary)",
-    },
-    background: {
-      primary: "var(--bg-primary)",
-      secondary: "var(--bg-secondary)",
-      tertiary: "var(--bg-tertiary)",
-    },
-    text: {
-      primary: "var(--text-primary)",
-      secondary: "var(--text-secondary)",
-      tertiary: "var(--text-tertiary)",
-    },
+  accent: {
+    primary: "var(--color-primary)",
+    secondary: "var(--color-secondary)",
+    tertiary: "var(--color-tertiary)",
   },
-  night: {
-    accent: {
-      primary: "var(--color-primary)",
-      secondary: "var(--color-secondary)",
-      tertiary: "var(--color-tertiary)",
-    },
-    background: {
-      primary: "var(--bg-primary)",
-      secondary: "var(--bg-secondary)",
-      tertiary: "var(--bg-tertiary)",
-    },
-    text: {
-      primary: "var(--text-primary)",
-      secondary: "var(--text-secondary)",
-      tertiary: "var(--text-tertiary)",
-    },
+  background: {
+    primary: "var(--bg-primary)",
+    secondary: "var(--bg-secondary)",
+    tertiary: "var(--bg-tertiary)",
   },
-} satisfies Record<"day" | "night", ThemeTokens>;
-
-export type ThemeName = keyof typeof themeTokens;
+  text: {
+    primary: "var(--text-primary)",
+    secondary: "var(--text-secondary)",
+    tertiary: "var(--text-tertiary)",
+  },
+} satisfies ThemeTokens;

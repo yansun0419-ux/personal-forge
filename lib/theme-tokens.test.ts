@@ -3,22 +3,30 @@ import test from "node:test";
 
 import { themeTokens } from "./theme-tokens.ts";
 
-const hexColorPattern = /^#[0-9A-F]{6}$/u;
+const cssVariablePattern = /^var\(--[a-z-]+\)$/u;
 
 test("theme tokens expose three-step scales for every role", () => {
-  for (const theme of Object.values(themeTokens)) {
-    assert.deepEqual(Object.keys(theme.accent), ["primary", "secondary", "tertiary"]);
-    assert.deepEqual(Object.keys(theme.background), ["primary", "secondary", "tertiary"]);
-    assert.deepEqual(Object.keys(theme.text), ["primary", "secondary", "tertiary"]);
-  }
+  assert.deepEqual(Object.keys(themeTokens.accent), [
+    "primary",
+    "secondary",
+    "tertiary",
+  ]);
+  assert.deepEqual(Object.keys(themeTokens.background), [
+    "primary",
+    "secondary",
+    "tertiary",
+  ]);
+  assert.deepEqual(Object.keys(themeTokens.text), [
+    "primary",
+    "secondary",
+    "tertiary",
+  ]);
 });
 
-test("theme token values are stable uppercase hex colors", () => {
-  for (const theme of Object.values(themeTokens)) {
-    for (const scale of Object.values(theme)) {
-      for (const value of Object.values(scale)) {
-        assert.match(value, hexColorPattern);
-      }
+test("theme token values point to CSS custom properties", () => {
+  for (const scale of Object.values(themeTokens)) {
+    for (const value of Object.values(scale)) {
+      assert.match(value, cssVariablePattern);
     }
   }
 });
