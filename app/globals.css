@@ -1,28 +1,52 @@
 @import "tailwindcss";
-@import "highlight.js/styles/github.css";
-@plugin "@tailwindcss/typography";
 
 :root {
-  --background: #111111;
-  --surface: #0a0a0a;
-  --surface-elevated: #1a1a1a;
-  --accent: #deff9a;
-  --text-primary: #f5f5f5;
-  --text-secondary: #a1a1aa;
+  --color-primary: #0A84FF;
+  --color-secondary: #38BDF8;
+  --color-tertiary: #B9E6FF;
+  --bg-primary: #F8FBFF;
+  --bg-secondary: #EAF4FF;
+  --bg-tertiary: #FFFFFF;
+  --text-primary: #07111F;
+  --text-secondary: #334155;
+  --text-tertiary: #64748B;
+  color-scheme: light;
+}
+
+[data-theme="night"] {
+  --color-primary: #FF2D55;
+  --color-secondary: #FF6B6B;
+  --color-tertiary: #FFB3C1;
+  --bg-primary: #07080D;
+  --bg-secondary: #11131A;
+  --bg-tertiary: #1B1D29;
+  --text-primary: #F8FBFF;
+  --text-secondary: #EBEBF5;
+  --text-tertiary: #AEAEB3;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
-  --color-accent: var(--accent);
+  --color-brand-primary: var(--color-primary);
+  --color-brand-secondary: var(--color-secondary);
+  --color-brand-tertiary: var(--color-tertiary);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
-  --font-sans: var(--font-urbanist);
+  --color-text-tertiary: var(--text-tertiary);
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--color-tertiary) 52%, transparent), transparent 28rem),
+    linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
   color: var(--text-primary);
-  font-family: var(--font-urbanist), Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--bg-tertiary);
 }
