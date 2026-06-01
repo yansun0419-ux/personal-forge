@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+
+import { I18nProvider } from "@/app/components/I18nProvider";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
-      <body className="flex min-h-full flex-col">{children}</body>
+    <html lang="zh-CN" className="h-full antialiased" suppressHydrationWarning>
+      <body className="flex min-h-full flex-col">
+        <I18nProvider>{children}</I18nProvider>
+      </body>
     </html>
   );
 }
