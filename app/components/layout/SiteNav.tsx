@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 
-import { useI18n } from "@/app/components/I18nProvider";
-import { useTheme } from "@/app/components/ThemeProvider";
-import { themeTokens } from "@/lib/theme-tokens";
+import { useI18n } from "@/app/components/providers/I18nProvider";
+import { useTheme } from "@/app/components/providers/ThemeProvider";
 
 interface SiteNavProps {
   showLanguageToggle?: boolean;
@@ -26,34 +25,23 @@ export function SiteNav({ showLanguageToggle = true }: SiteNavProps) {
     <header className="flex items-center justify-between gap-4">
       <Link
         aria-label={t("common.brand")}
-        className="text-sm font-semibold uppercase tracking-[0.22em]"
+        className="text-sm font-semibold uppercase tracking-[0.22em] text-accent-primary"
         href="/"
-        style={{ color: themeTokens.text.secondary }}
       >
-        {t("common.brand")}
+        {t("common.brand")}baga
       </Link>
       <div className="flex flex-wrap items-center justify-end gap-3">
         <Link
           aria-label={t("common.colorStudy")}
-          className="rounded-full border px-4 py-2 text-sm font-semibold"
+          className="rounded-full border border-accent-primary bg-bg-tertiary px-4 py-2 text-sm font-semibold text-text-primary"
           href="/colors"
-          style={{
-            backgroundColor: themeTokens.background.tertiary,
-            borderColor: themeTokens.accent.primary,
-            color: themeTokens.text.primary,
-          }}
         >
           {t("common.colorStudy")}
         </Link>
         <button
           aria-label={themeAriaLabel}
-          className="rounded-full border px-4 py-2 text-sm font-semibold"
+          className="rounded-full border border-accent-primary bg-bg-tertiary px-4 py-2 text-sm font-semibold text-text-primary"
           type="button"
-          style={{
-            backgroundColor: themeTokens.background.tertiary,
-            borderColor: themeTokens.accent.primary,
-            color: themeTokens.text.primary,
-          }}
           onClick={toggleTheme}
         >
           {themeLabel}
@@ -61,13 +49,8 @@ export function SiteNav({ showLanguageToggle = true }: SiteNavProps) {
         {showLanguageToggle ? (
           <button
             aria-label={t("common.languageToggleLabel")}
-            className="rounded-full border px-4 py-2 text-sm font-semibold"
+            className="rounded-full border border-accent-secondary bg-bg-tertiary px-4 py-2 text-sm font-semibold text-text-primary"
             type="button"
-            style={{
-              backgroundColor: themeTokens.background.tertiary,
-              borderColor: themeTokens.accent.secondary,
-              color: themeTokens.text.primary,
-            }}
             onClick={() => setLocale(nextLocale(locale))}
           >
             {t("common.languageToggle")}

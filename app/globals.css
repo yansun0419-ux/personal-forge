@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: #0A84FF;
-  --color-secondary: #38BDF8;
-  --color-tertiary: #B9E6FF;
+  --accent-primary: #0A84FF;
+  --accent-secondary: #38BDF8;
+  --accent-tertiary: #B9E6FF;
   --bg-primary: #F8FBFF;
   --bg-secondary: #EAF4FF;
   --bg-tertiary: #FFFFFF;
@@ -14,9 +14,9 @@
 }
 
 [data-theme="night"] {
-  --color-primary: #FF2D55;
-  --color-secondary: #FF6B6B;
-  --color-tertiary: #FFB3C1;
+  --accent-primary: #FF2D55;
+  --accent-secondary: #FF6B6B;
+  --accent-tertiary: #FFB3C1;
   --bg-primary: #07080D;
   --bg-secondary: #11131A;
   --bg-tertiary: #1B1D29;
@@ -27,9 +27,9 @@
 }
 
 @theme inline {
-  --color-brand-primary: var(--color-primary);
-  --color-brand-secondary: var(--color-secondary);
-  --color-brand-tertiary: var(--color-tertiary);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-tertiary: var(--accent-tertiary);
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
   --color-bg-tertiary: var(--bg-tertiary);
