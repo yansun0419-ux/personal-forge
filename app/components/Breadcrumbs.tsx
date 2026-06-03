@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { BreadcrumbItem } from "@/lib/navigation";
+import { themeTokens } from "@/lib/theme-tokens";
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
@@ -8,7 +9,11 @@ interface BreadcrumbsProps {
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav aria-label="面包屑导航" className="text-sm text-text-tertiary">
+    <nav
+      aria-label="面包屑导航"
+      className="text-sm"
+      style={{ color: themeTokens.text.tertiary }}
+    >
       <ol className="flex flex-wrap items-center gap-2">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
@@ -17,14 +22,17 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
             <li className="flex items-center gap-2" key={item.href}>
               {index > 0 ? <span aria-hidden="true">/</span> : null}
               {isLast ? (
-                <span aria-current="page" className="text-text-secondary">
+                <span
+                  aria-current="page"
+                  style={{ color: themeTokens.text.secondary }}
+                >
                   {item.label}
                 </span>
               ) : (
                 <Link
                   aria-label={`前往${item.label}`}
-                  className="transition hover:text-brand-primary"
                   href={item.href}
+                  style={{ color: themeTokens.text.tertiary }}
                 >
                   {item.label}
                 </Link>
