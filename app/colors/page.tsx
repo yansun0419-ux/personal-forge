@@ -1,7 +1,7 @@
 "use client";
 
-import { SiteNav } from "@/app/components/layout/SiteNav";
-import { Breadcrumbs } from "@/app/components/ui/Breadcrumbs";
+import { SiteNav } from "@/components/layout/SiteNav";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { createBreadcrumbItems } from "@/lib/navigation";
 
 const colorRoles = [

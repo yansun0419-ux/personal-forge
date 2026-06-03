@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 
-import { useI18n } from "@/app/components/providers/I18nProvider";
-import { useTheme } from "@/app/components/providers/ThemeProvider";
+import { useI18n } from "@/components/providers/I18nProvider";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 interface SiteNavProps {
   showLanguageToggle?: boolean;

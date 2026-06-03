@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { I18nProvider } from "@/app/components/providers/I18nProvider";
-import { ThemeProvider } from "@/app/components/providers/ThemeProvider";
+import { I18nProvider } from "@/components/providers/I18nProvider";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 import "./globals.css";
 
