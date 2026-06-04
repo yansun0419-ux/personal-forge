@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 :root,
-[data-theme="light"],
-[data-theme="day"] {
+[data-theme="light"] {
   --accent-primary: #0A84FF;
   --accent-secondary: #38BDF8;
   --accent-tertiary: #B9E6FF;
@@ -15,8 +14,7 @@
   color-scheme: light;
 }
 
-[data-theme="dark"],
-[data-theme="night"] {
+[data-theme="dark"]{
   --accent-primary: #FF2D55;
   --accent-secondary: #FF6B6B;
   --accent-tertiary: #FFB3C1;

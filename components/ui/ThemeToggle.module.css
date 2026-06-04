@@ -25,8 +25,7 @@
     calc(var(--size) * 0.45) calc(var(--size) * -0.45) 0 calc(var(--size) * -0.4);
 }
 
-:global(html[data-theme="dark"]) .toggle,
-:global(html[data-theme="night"]) .toggle {
+:global(html[data-theme="dark"]) .toggle{
   color: hsl(240, 100%, 95%);
   transform: scale(1);
   box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
