@@ -1,19 +1,19 @@
 .toggle {
   --size: 2rem;
 
-  display: block;
+  /* display: block; */
   width: var(--size);
   height: var(--size);
-  border-radius: 999px;
-  color: hsl(40, 100%, 50%);
+  border-radius: 100%;
+  color: var(--accent-primary);
   cursor: pointer;
   pointer-events: none;
   transform: scale(0.75);
   transition:
-    box-shadow 500ms,
-    color 500ms,
-    transform 500ms;
+    box-shadow 300ms,
+    transform 300ms;
   box-shadow:
+    /* the sun */
     inset 0 0 0 var(--size),
     calc(var(--size) * -0.65) 0 0 calc(var(--size) * -0.4),
     calc(var(--size) * 0.65) 0 0 calc(var(--size) * -0.4),
@@ -26,7 +26,6 @@
 }
 
 :global(html[data-theme="dark"]) .toggle{
-  color: hsl(240, 100%, 95%);
   transform: scale(1);
-  box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+  box-shadow: /* the moon */ inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
 }
