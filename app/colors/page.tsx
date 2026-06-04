@@ -1,6 +1,5 @@
 "use client";
 
-import { SiteNav } from "@/components/layout/SiteNav";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { createBreadcrumbItems } from "@/lib/navigation";
 
@@ -68,8 +67,6 @@ export default function ColorsPage() {
       }}
     >
       <div className="mx-auto flex min-h-[calc(100vh-3rem)] w-full max-w-6xl flex-col">
-        <SiteNav />
-
         <div className="pt-8">
           <Breadcrumbs items={createBreadcrumbItems("/colors")} />
         </div>

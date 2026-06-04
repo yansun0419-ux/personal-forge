@@ -16,10 +16,7 @@ export const zh = {
     languageToggle: "English",
     languageToggleLabel: "切换到英文",
     readPhilosophy: "阅读锻造哲学",
-    themeToggleDay: "白昼",
-    themeToggleDayLabel: "切换到白昼模式",
-    themeToggleNight: "黑夜",
-    themeToggleNightLabel: "切换到黑夜模式",
+    themeToggleLabel: "切换主题",
     viewColorStudy: "查看视觉试炼场",
   },
   home: {
@@ -55,10 +52,7 @@ export const en = {
     languageToggle: "中文",
     languageToggleLabel: "Switch to Chinese",
     readPhilosophy: "Read the Philosophy",
-    themeToggleDay: "Day",
-    themeToggleDayLabel: "Switch to day mode",
-    themeToggleNight: "Night",
-    themeToggleNightLabel: "Switch to night mode",
+    themeToggleLabel: "Toggle theme",
     viewColorStudy: "View the Visual Trial",
   },
   home: {

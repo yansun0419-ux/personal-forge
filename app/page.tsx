@@ -4,7 +4,6 @@ import Image from "next/image";
 
 import { HomePhilosophySection } from "@/components/HomePhilosophySection";
 import { HomeStatusPanel } from "@/components/HomeStatusPanel";
-import { SiteNav } from "@/components/layout/SiteNav";
 import { useI18n } from "@/components/providers/I18nProvider";
 
 export default function HomePageClient() {
@@ -30,8 +29,6 @@ export default function HomePageClient() {
       />
 
       <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-6 sm:px-10">
-        <SiteNav />
-
         <section className="grid flex-1 items-center gap-12 py-12 lg:grid-cols-[minmax(0,1.04fr)_minmax(22rem,0.72fr)]">
           <div className="max-w-4xl">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.24em] text-accent-primary">

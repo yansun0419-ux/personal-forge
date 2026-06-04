@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-:root {
+:root,
+[data-theme="light"],
+[data-theme="day"] {
   --accent-primary: #0A84FF;
   --accent-secondary: #38BDF8;
   --accent-tertiary: #B9E6FF;
@@ -13,6 +15,7 @@
   color-scheme: light;
 }
 
+[data-theme="dark"],
 [data-theme="night"] {
   --accent-primary: #FF2D55;
   --accent-secondary: #FF6B6B;
@@ -40,13 +43,13 @@
 
 body {
   background:
-    radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--color-tertiary) 52%, transparent), transparent 28rem),
+    radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--accent-tertiary) 52%, transparent), transparent 28rem),
     linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
   color: var(--text-primary);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 ::selection {
-  background: var(--color-primary);
+  background: var(--accent-primary);
   color: var(--bg-tertiary);
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { I18nProvider } from "@/components/providers/I18nProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { SiteNav } from "@/components/layout/SiteNav";
 
 import "./globals.css";
 
@@ -20,7 +21,10 @@ export default function RootLayout({
     <html lang="zh-CN" className="h-full antialiased" suppressHydrationWarning>
       <body className="flex min-h-full flex-col">
         <I18nProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <SiteNav />
+            {children}
+          </ThemeProvider>
         </I18nProvider>
       </body>
     </html>
