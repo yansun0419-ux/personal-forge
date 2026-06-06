@@ -19,6 +19,11 @@ export const zh = {
     themeToggleLabel: "切换主题",
     viewColorStudy: "查看视觉试炼场",
   },
+  navigation: {
+    breadcrumbs: "面包屑导航",
+    colors: "确定颜色",
+    home: "主页",
+  },
   home: {
     eyebrow: "Forge log / 修炼日志",
     title: "把每一个平常日夜，锻成不凡的作品。",
@@ -54,6 +59,11 @@ export const en = {
     readPhilosophy: "Read the Philosophy",
     themeToggleLabel: "Toggle theme",
     viewColorStudy: "View the Visual Trial",
+  },
+  navigation: {
+    breadcrumbs: "Breadcrumb navigation",
+    colors: "Color Study",
+    home: "Home",
   },
   home: {
     eyebrow: "Forge log / Practice journal",

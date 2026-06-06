@@ -14,6 +14,7 @@ test("reads nested translation keys with dot notation", () => {
 
   assert.equal(t("home.title"), "把每一个平常日夜，锻成不凡的作品。");
   assert.equal(t("common.colorStudy"), "确定颜色");
+  assert.equal(t("navigation.home"), "主页");
 });
 
 test("keeps framework copy bilingual", () => {

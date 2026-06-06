@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import { HomePhilosophySection } from "@/components/HomePhilosophySection";
 import { HomeStatusPanel } from "@/components/HomeStatusPanel";
 import { useI18n } from "@/components/providers/LanguageProvider";
@@ -11,15 +9,6 @@ export default function HomePageClient() {
 
   return (
     <main className="relative isolate min-h-screen overflow-hidden bg-bg-primary text-text-primary">
-      <Image
-        alt={t("home.backgroundAlt")}
-        className="absolute inset-0 -z-20 object-cover mix-blend-luminosity"
-        fill
-        priority
-        sizes="100vw"
-        src="/forge-nebula.png"
-        style={{ opacity: 0.18 }}
-      />
       <div
         className="absolute inset-0 -z-10"
         style={{

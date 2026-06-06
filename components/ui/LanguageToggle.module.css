@@ -19,12 +19,12 @@
 
 .en {
   font-size: calc(var(--size) * 1.05);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .zh {
   font-size: calc(var(--size) * 0.8);
-  font-weight: 800;
+  font-weight: 900;
 }
 
 /* state 1: English active */
