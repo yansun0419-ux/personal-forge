@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { I18nProvider } from "@/components/providers/I18nProvider";
+import { I18nProvider } from "@/components/providers/LanguageProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { SiteNav } from "@/components/layout/SiteNav";
 

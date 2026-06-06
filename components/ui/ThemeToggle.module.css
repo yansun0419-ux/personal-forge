@@ -4,7 +4,7 @@
   /* display: block; */
   width: var(--size);
   height: var(--size);
-  border-radius: 100%;
+  border-radius: 50%;
   color: var(--accent-primary);
   cursor: pointer;
   pointer-events: none;

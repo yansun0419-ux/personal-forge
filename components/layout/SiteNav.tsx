@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 
-import { useI18n } from "@/components/providers/I18nProvider";
+import { useI18n } from "@/components/providers/LanguageProvider";
 import { ThemeToggle } from "../ui/ThemeToggle";
-
-const nextLocale = (locale: "zh" | "en") => (locale === "zh" ? "en" : "zh");
+import { LanguageToggle } from "../ui/LanguageToggle";
 
 export function SiteNav() {
-  const { locale, setLocale, t } = useI18n();
+  const { t } = useI18n();
 
   return (
     <header className="flex items-center justify-between gap-4 px-4 py-4">
@@ -20,17 +19,9 @@ export function SiteNav() {
         {t("common.brand")}
       </Link>
 
-      <div className="flex flex-wrap items-center justify-end gap-3">
+      <div className="flex flex-wrap items-center justify-end">
         <ThemeToggle />
-
-        <button
-          aria-label={t("common.languageToggleLabel")}
-          className="rounded-full border border-accent-secondary bg-bg-tertiary px-4 py-2 text-sm font-semibold text-text-primary"
-          type="button"
-          onClick={() => setLocale(nextLocale(locale))}
-        >
-          {t("common.languageToggle")}
-        </button>
+        <LanguageToggle />
       </div>
     </header>
   );

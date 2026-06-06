@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { HomePhilosophySection } from "@/components/HomePhilosophySection";
 import { HomeStatusPanel } from "@/components/HomeStatusPanel";
-import { useI18n } from "@/components/providers/I18nProvider";
+import { useI18n } from "@/components/providers/LanguageProvider";
 
 export default function HomePageClient() {
   const { t } = useI18n();

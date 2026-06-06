@@ -1,0 +1,50 @@
+.container {
+  --size: 2rem;
+
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  /* the 3D effect relies on perspective, so we need to set it on the container */
+  perspective: 100px;
+  transform-style: preserve-3d;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  line-height: 1;
+  transition: all 300ms;
+}
+
+.en {
+  font-size: calc(var(--size) * 1.05);
+  font-weight: 600;
+}
+
+.zh {
+  font-size: calc(var(--size) * 0.8);
+  font-weight: 800;
+}
+
+/* state 1: English active */
+.container[data-locale="en"] .en {
+  transform: translate3d(-65%, -55%, 5px) scale(1);
+  color: var(--accent-primary);
+}
+
+.container[data-locale="en"] .zh {
+  transform: translate3d(-15%, -15%, -5px) scale(0.75);
+  color: var(--text-tertiary); 
+}
+
+/* state 2: Chinese active */
+.container[data-locale="zh"] .zh {
+  transform: translate3d(-60%, -60%, 5px) scale(1);
+  color: var(--accent-primary);
+}
+
+.container[data-locale="zh"] .en {
+  transform: translate3d(-10%, -20%, -5px) scale(0.75);
+  color: var(--text-tertiary);
+}
