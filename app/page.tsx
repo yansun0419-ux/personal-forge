@@ -2,7 +2,7 @@
 
 import { HomePhilosophySection } from "@/components/HomePhilosophySection";
 import { HomeStatusPanel } from "@/components/HomeStatusPanel";
-import { useI18n } from "@/components/providers/LanguageProvider";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 export default function HomePageClient() {
   const { t } = useI18n();

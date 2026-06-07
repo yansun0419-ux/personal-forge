@@ -10,9 +10,9 @@ export function ThemeProvider({
   return (
     <NextThemesProvider
       attribute="data-theme"
-      defaultTheme="light"
+      defaultTheme="system"
       enableColorScheme
-      enableSystem={false}
+      enableSystem
       storageKey="personal-forge-theme"
       {...props}
     >

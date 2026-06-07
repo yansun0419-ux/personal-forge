@@ -8,7 +8,7 @@ export function ThemeToggle() {
   const { resolvedTheme, setTheme, theme } = useTheme();
 
   function toggleTheme() {
-    const currentTheme = theme === "system" ? resolvedTheme : theme;
+    const currentTheme = theme === "system" ? resolvedTheme : theme ?? resolvedTheme;
 
     setTheme(currentTheme === "dark" ? "light" : "dark");
   }

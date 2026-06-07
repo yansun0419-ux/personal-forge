@@ -1,6 +1,6 @@
 "use client";
 
-import { useI18n } from "@/components/providers/LanguageProvider";
+import { useI18n } from "@/components/providers/I18nProvider";
 import type { TranslationKey } from "@/lib/i18n";
 
 const forgeStats = [

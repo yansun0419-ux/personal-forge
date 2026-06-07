@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-import { useI18n } from "@/components/providers/LanguageProvider";
+import { useI18n } from "@/components/providers/I18nProvider";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
