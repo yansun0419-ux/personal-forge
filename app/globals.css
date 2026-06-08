@@ -47,6 +47,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+html[data-locale-pending="true"] body {
+  visibility: hidden;
+}
+
 ::selection {
   background: var(--accent-primary);
   color: var(--bg-tertiary);

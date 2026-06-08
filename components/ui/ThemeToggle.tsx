@@ -8,10 +8,16 @@ export function ThemeToggle() {
   const { resolvedTheme, setTheme, theme } = useTheme();
 
   function toggleTheme() {
-    const currentTheme = theme === "system" ? resolvedTheme : theme ?? resolvedTheme;
+    const nextTheme =
+      theme === "system" ? "light" : theme === "light" ? "dark" : "system";
 
-    setTheme(currentTheme === "dark" ? "light" : "dark");
+    setTheme(nextTheme);
   }
+
+  const themeMode =
+    theme === "system" || theme === "light" || theme === "dark"
+      ? theme
+      : resolvedTheme ?? "system";
 
   return (
     <button
@@ -20,7 +26,11 @@ export function ThemeToggle() {
       suppressHydrationWarning
       type="button"
     >
-      <span aria-hidden="true" className={styles.toggle} />
+      <span
+        aria-hidden="true"
+        className={styles.toggle}
+        data-theme-mode={themeMode}
+      />
     </button>
   );
 }
