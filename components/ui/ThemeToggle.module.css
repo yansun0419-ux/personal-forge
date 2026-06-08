@@ -1,33 +1,33 @@
 .toggle {
   --size: 2rem;
 
-  display: block;
   position: relative;
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
-  color: var(--accent-primary);
-  cursor: pointer;
-  overflow: visible;
   pointer-events: none;
-  transform: scale(0.75);
-  transition:
-    background 300ms,
-    box-shadow 300ms,
-    transform 300ms;
 }
 
 .toggle::before,
 .toggle::after {
   content: "";
   position: absolute;
-  opacity: 0;
+  border-radius: 50%;
+  color: var(--accent-primary);
+  cursor: pointer;
+  overflow: visible;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   transition:
-    opacity 300ms,
-    transform 300ms;
+    transform 300ms,
+    clip-path 300ms;
 }
 
-.toggle[data-theme-mode="light"] {
+.toggle::before {
+  background: var(--accent-primary);
+  transform: scale(0.75);
   box-shadow:
     /* the sun */
     inset 0 0 0 var(--size),
@@ -41,55 +41,32 @@
     calc(var(--size) * 0.45) calc(var(--size) * -0.45) 0 calc(var(--size) * -0.4);
 }
 
-.toggle[data-theme-mode="dark"] {
+.toggle::after {
+  color: var(--accent-primary);
   transform: scale(1);
   box-shadow: /* the moon */ inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
 }
 
-.toggle[data-theme-mode="system"] {
-  overflow: hidden;
-  transform: scale(1);
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--accent-primary) 92%, white) 0 48%,
-      color-mix(in srgb, var(--text-primary) 24%, transparent) 49% 51%,
-      #07080d 52% 100%
-    );
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--text-primary) 16%, transparent),
-    0 0 0 1px color-mix(in srgb, var(--bg-tertiary) 60%, transparent);
+/* state 1: light mode / full sun */
+.toggle[data-theme-mode="light"]::before {
+  clip-path: polygon(50% -100%, 192% 42%, 42% 192%, -100% 50%); 
+}
+.toggle[data-theme-mode="light"]::after {
+  clip-path: polygon(200% 50%, 200% 50%, 50% 200%, 50% 200%); 
 }
 
+/* state 2: dark mode / full moon */
+.toggle[data-theme-mode="dark"]::before {
+  clip-path: polygon(50% -100%, 50% -100%, -100% 50%, -100% 50%); 
+}
+.toggle[data-theme-mode="dark"]::after {
+  clip-path: polygon(50% -100%, 192% 42%, 42% 192%, -100% 50%); 
+}
+
+/* state 3: system mode / sun and moon */
 .toggle[data-theme-mode="system"]::before {
-  top: 0;
-  left: 0;
-  width: 0.72rem;
-  height: 0.72rem;
-  border-radius: 50%;
-  color: var(--bg-tertiary);
-  opacity: 1;
-  transform: scale(1);
-  box-shadow:
-    inset 0 0 0 0.3rem,
-    -0.38rem 0 0 -0.18rem,
-    0.38rem 0 0 -0.18rem,
-    0 -0.38rem 0 -0.18rem,
-    0 0.38rem 0 -0.18rem,
-    -0.27rem -0.27rem 0 -0.18rem,
-    0.27rem 0.27rem 0 -0.18rem,
-    -0.27rem 0.27rem 0 -0.18rem,
-    0.27rem -0.27rem 0 -0.18rem;
+  clip-path: polygon(50% -100%, 121% -29%, -29% 121%, -100% 50%); 
 }
-
 .toggle[data-theme-mode="system"]::after {
-  right: 0.32rem;
-  bottom: 0.28rem;
-  width: 0.72rem;
-  height: 0.72rem;
-  border-radius: 50%;
-  color: #f8fbff;
-  opacity: 1;
-  transform: scale(1);
-  box-shadow: inset 0.24rem -0.18rem 0;
+  clip-path: polygon(129% -21%, 192% 42%, 42% 192%, -21% 129%); 
 }

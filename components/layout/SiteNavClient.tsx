@@ -17,7 +17,7 @@ export function SiteNavClient({ routes }: SiteNavClientProps) {
   const { t } = useI18n();
 
   return (
-    <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 p-4">
+    <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 py-4 px-6 sm:px-10">
       <Breadcrumbs
         items={createBreadcrumbItems(pathname, routes, t)}
         navLabel={t("navigation.breadcrumbs")}

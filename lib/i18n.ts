@@ -16,13 +16,24 @@ export const zh = {
     languageToggle: "English",
     languageToggleLabel: "切换到英文",
     readPhilosophy: "阅读锻造哲学",
-    themeToggleLabel: "切换主题",
+    themeToggleLabel: {
+      loading: "切换主题",
+      system: {
+        light: "当前主题：跟随系统。切换到白天模式",
+      },
+      light: {
+        dark: "当前主题：白天模式。切换到夜晚模式",
+      },
+      dark: {
+        system: "当前主题：夜晚模式。切换到跟随系统",
+      },
+    },
     viewColorStudy: "查看视觉试炼场",
   },
   navigation: {
     breadcrumbs: "面包屑导航",
     colors: "确定颜色",
-    home: "主页",
+    home: "个人锻造台",
   },
   home: {
     eyebrow: "Forge log / 修炼日志",
@@ -57,13 +68,24 @@ export const en = {
     languageToggle: "中文",
     languageToggleLabel: "Switch to Chinese",
     readPhilosophy: "Read the Philosophy",
-    themeToggleLabel: "Toggle theme",
+    themeToggleLabel: {
+      loading: "Toggle theme",
+      system: {
+        light: "Current theme: system. Switch to light mode",
+      },
+      light: {
+        dark: "Current theme: light mode. Switch to dark mode",
+      },
+      dark: {
+        system: "Current theme: dark mode. Switch to system theme",
+      },
+    },
     viewColorStudy: "View the Visual Trial",
   },
   navigation: {
     breadcrumbs: "Breadcrumb navigation",
     colors: "Color Study",
-    home: "Home",
+    home: "Personal Forge",
   },
   home: {
     eyebrow: "Forge log / Practice journal",

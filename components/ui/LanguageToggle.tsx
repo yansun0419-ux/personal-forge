@@ -4,7 +4,7 @@ import { useI18n } from "@/components/providers/I18nProvider";
 import styles from "./LanguageToggle.module.css";
 
 export function LanguageToggle() {
-  const { locale, setLocale } = useI18n();
+  const { locale, setLocale, t } = useI18n();
 
   function toggleLanguage() {
     setLocale(locale === "zh" ? "en" : "zh");
@@ -12,8 +12,10 @@ export function LanguageToggle() {
 
   return (
     <button
-      className="inline-grid h-10 w-10 place-items-center"
+      aria-label={t("common.languageToggleLabel")}
+      className="inline-grid h-10 w-10 place-items-center cursor-pointer"
       onClick={toggleLanguage}
+      title={t("common.languageToggleLabel")}
       type="button"
     >
       <div className={styles.container} data-locale={locale}>
