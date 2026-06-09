@@ -10,7 +10,7 @@ const philosophyKeys = [
   "home.philosophyParagraph4",
 ] as const satisfies readonly TranslationKey[];
 
-export function HomePhilosophySection() {
+export function PhilosophySection() {
   const { t } = useI18n();
 
   return (

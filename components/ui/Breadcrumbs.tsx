@@ -1,6 +1,11 @@
-import Link from "next/link";
+"use client";
 
-import type { BreadcrumbItem } from "@/lib/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { useI18n } from "@/components/providers/I18nProvider";
+import { createBreadcrumbItems, type BreadcrumbItem } from "@/lib/navigation";
+import type { AppRoute } from "@/lib/app-routes";
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
@@ -34,5 +39,21 @@ export function Breadcrumbs({ items, navLabel }: BreadcrumbsProps) {
         })}
       </ol>
     </nav>
+  );
+}
+
+interface SiteNavBreadcrumbsProps {
+  routes: AppRoute[];
+}
+
+export function SiteNavBreadcrumbs({ routes }: SiteNavBreadcrumbsProps) {
+  const pathname = usePathname();
+  const { t } = useI18n();
+
+  return (
+    <Breadcrumbs
+      items={createBreadcrumbItems(pathname, routes, t)}
+      navLabel={t("navigation.breadcrumbs")}
+    />
   );
 }

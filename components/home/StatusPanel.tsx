@@ -21,7 +21,7 @@ const forgeStats = [
   value: TranslationKey;
 }[];
 
-export function HomeStatusPanel() {
+export function StatusPanel() {
   const { t } = useI18n();
 
   return (

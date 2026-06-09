@@ -1,7 +1,9 @@
 import { readdirSync } from "node:fs";
 import { join } from "node:path";
 
-import type { AppRoute } from "./navigation.ts";
+export interface AppRoute {
+  href: string;
+}
 
 const pageFilePattern = /^page\.(js|jsx|ts|tsx|md|mdx)$/;
 

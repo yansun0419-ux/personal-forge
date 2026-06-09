@@ -1,7 +1,7 @@
 "use client";
 
-import { HomePhilosophySection } from "@/components/HomePhilosophySection";
-import { HomeStatusPanel } from "@/components/HomeStatusPanel";
+import { PhilosophySection } from "@/components/home/PhilosophySection";
+import { StatusPanel } from "@/components/home/StatusPanel";
 import { useI18n } from "@/components/providers/I18nProvider";
 
 export default function HomePageClient() {
@@ -47,10 +47,10 @@ export default function HomePageClient() {
             </div>
           </div>
 
-          <HomeStatusPanel />
+          <StatusPanel />
         </section>
 
-        <HomePhilosophySection />
+        <PhilosophySection />
       </div>
     </main>
   );

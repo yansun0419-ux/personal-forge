@@ -1,12 +1,9 @@
+import type { AppRoute } from "./app-routes.ts";
 import type { TranslationKey } from "./i18n.ts";
 
 export interface BreadcrumbItem {
   href: string;
   label: string;
-}
-
-export interface AppRoute {
-  href: string;
 }
 
 type Translate = (key: TranslationKey) => string;
